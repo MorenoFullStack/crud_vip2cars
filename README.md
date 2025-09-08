@@ -50,6 +50,9 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
 2. **Instalar las dependencias de PHP**:
    ```bash
     cd crud_vip2cars
+
+- **Instala las dependencias de PHP utilizando Composer:**
+   ```bash
     composer install
 
 3. **Instalar las dependencias de Node.js:**:
