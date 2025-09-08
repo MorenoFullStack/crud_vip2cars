@@ -1,66 +1,73 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vehiculo;
 use App\Models\Contacto;
 
-class ContactoController extends Controller
+class VehiculoController extends Controller
 {
-        public function index()
+    public function index()
     {
-        $contactos = Contacto::all();
-        return view('contactos.index', compact('contactos'));
+        $vehiculos = Vehiculo::with('cliente')->get();
+        return view('vehiculos.index', compact('vehiculos'));
     }
 
     public function create()
     {
-        return view('contactos.create-contacto');
+        $contactos = Contacto::all();
+        return view('vehiculos.create-vehiculo', compact('contactos'));
     }
 
     public function store(Request $request)
     {
         $request->validate($this->validationRules(), $this->validationMessages());
 
-        Contacto::create($request->all());
-        return redirect()->route('contactos.index')->with('success', 'Cliente registrado con éxito!');
+        Vehiculo::create($request->all());
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo registrado correctamente');
     }
 
     public function edit($id)
     {
-        $contacto = Contacto::findOrFail($id);
-        return view('contactos.create-contacto', compact('contacto'));
+        $vehiculo = Vehiculo::findOrFail($id);
+        $contactos = Contacto::all();
+        return view('vehiculos.create-vehiculo', compact('vehiculo', 'contactos'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate($this->validationRules($id), $this->validationMessages());
 
-        $contacto = Contacto::findOrFail($id);
-        $contacto->update($request->all());
-        return redirect()->route('contactos.index')->with('success', 'Cliente actualizado con éxito!');
+        $vehiculo = Vehiculo::findOrFail($id);
+        $vehiculo->update($request->all());
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo actualizado correctamente');
     }
 
     public function destroy($id)
     {
-        Contacto::destroy($id);
-        return redirect()->route('contactos.index')->with('success', 'Cliente eliminado con éxito!');
+        $vehiculo = Vehiculo::findOrFail($id);
+        $vehiculo->delete();
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo eliminado correctamente');
     }
 
     private function validationRules($id = null)
     {
         return [
-            'nombre' => 'required|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'documento_identidad' => 'required|string|max:8|unique:contactos,documento_identidad,' . $id,
-            'correo' => 'required|email',
-            'telefono' => 'required|string|max:9',
+            'placa' => 'required|string|max:10|unique:vehiculos,placa,' . $id,
+            'marca' => 'required|string|max:255',
+            'modelo' => 'required|string|max:255',
+            'year_fabricacion' => 'required|integer|digits:4|min:1999|max:' . date('Y'),
+            'cliente_id' => 'required|exists:contactos,id',
         ];
     }
 
     private function validationMessages()
     {
         return [
-            'documento_identidad.unique' => 'El DNI ya está registrado en otro contacto.',
+            'placa.unique' => 'La placa ya está registrada en otro vehículo.',
+            'year_fabricacion.min' => 'El año de fabricación debe ser al menos 1999.',
+            'year_fabricacion.max' => 'El año de fabricación no puede ser mayor al año actual.',
         ];
     }
 }
