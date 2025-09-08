@@ -61,14 +61,14 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
 
 4. **Configura las variables de entorno:**
 
-   -Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra en la fila 23 y estaran comentadas, se debe descomentar:
+-Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra en la fila 23 y estaran comentadas, se debe de descomentar:
 
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=nombre_de_tu_base_de_datos
-   DB_USERNAME=tu_usuario
-   DB_PASSWORD=tu_contraseña
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=nombre_de_tu_base_de_datos
+    DB_USERNAME=tu_usuario
+    DB_PASSWORD=tu_contraseña
 
 - En caso de no tener contraseña ni usuario dejarlo asi
 
