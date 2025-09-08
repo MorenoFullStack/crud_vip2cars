@@ -17,7 +17,7 @@ class VehiculoController extends Controller
     public function create()
     {
         $contactos = Contacto::all();
-        return view('vehiculos.create-vehiculo', compact('contactos'));
+        return view('vehiculos.formulario-vehiculo', compact('contactos'));
     }
 
     public function store(Request $request)
@@ -32,7 +32,7 @@ class VehiculoController extends Controller
     {
         $vehiculo = Vehiculo::findOrFail($id);
         $contactos = Contacto::all();
-        return view('vehiculos.create-vehiculo', compact('vehiculo', 'contactos'));
+        return view('vehiculos.formulario-vehiculo', compact('vehiculo', 'contactos'));
     }
 
     public function update(Request $request, $id)
@@ -68,6 +68,7 @@ class VehiculoController extends Controller
             'placa.unique' => 'La placa ya está registrada en otro vehículo.',
             'year_fabricacion.min' => 'El año de fabricación debe ser al menos 1999.',
             'year_fabricacion.max' => 'El año de fabricación no puede ser mayor al año actual.',
+            'year_fabricacion.digits' => 'El año de fabricación debe tener exactamente 4 dígitos.',
         ];
     }
 }

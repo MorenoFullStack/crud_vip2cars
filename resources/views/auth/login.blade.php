@@ -20,7 +20,7 @@
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico</label>
-                                <input type="email" name="email" id="email" class="form-control input-custom" placeholder="demo@demo.com" required>
+                                <input type="email" name="email" id="email" class="form-control input-custom" placeholder="Ingresa tu correo electrónico" required>
                                 @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -28,7 +28,7 @@
 
                             <div class="mb-3">
                                 <label for="password" class="form-label">Contraseña</label>
-                                <input type="password" name="password" id="password" class="form-control input-custom" placeholder="demo123" required>
+                                <input type="password" name="password" id="password" class="form-control input-custom" placeholder="ingrese tu contraseña" required>
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
