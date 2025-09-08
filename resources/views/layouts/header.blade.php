@@ -1,6 +1,7 @@
 <header class="bg-black text-white py-3">
     <div class="container d-flex justify-content-between align-items-center">
         <a href="{{ route('vehiculos.index') }}">
+            <img src="{{ asset('img/logo.png') }}" alt="VIP2CARS" class="logo-img">
         </a>
         <nav class="navbar navbar-expand-lg navbar-dark p-0">
             <ul class="navbar-nav ms-auto">

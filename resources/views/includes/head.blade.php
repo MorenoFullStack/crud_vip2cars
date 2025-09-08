@@ -12,4 +12,6 @@
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 </head>
