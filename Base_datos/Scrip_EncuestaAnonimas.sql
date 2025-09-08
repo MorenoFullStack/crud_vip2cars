@@ -59,7 +59,7 @@ CREATE TABLE RespuestasParticipante (
 );
 GO
 
--- 8. Tabla de Auditoría
+-- 8. Tabla de Auditoria
 CREATE TABLE Auditoria (
     id INT IDENTITY(1,1) PRIMARY KEY,
     accion VARCHAR(255),
@@ -70,7 +70,7 @@ CREATE TABLE Auditoria (
 );
 GO
 
--- 9. Tabla de Categorías
+-- 9. Tabla de Categorias
 CREATE TABLE Categorias (
     id INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE Categorias (
 );
 GO
 
--- Relacionar la tabla de Encuestas con Categorías
+-- Relacionar la tabla de Encuestas con Categorias
 ALTER TABLE Encuestas ADD categoria_id INT;
 ALTER TABLE Encuestas ADD FOREIGN KEY (categoria_id) REFERENCES Categorias(id);
 GO
