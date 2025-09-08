@@ -15,7 +15,7 @@ class ContactoController extends Controller
 
     public function create()
     {
-        return view('contactos.create-contacto');
+        return view('contactos.formulario-contacto');
     }
 
     public function store(Request $request)
@@ -29,7 +29,7 @@ class ContactoController extends Controller
     public function edit($id)
     {
         $contacto = Contacto::findOrFail($id);
-        return view('contactos.create-contacto', compact('contacto'));
+        return view('contactos.formulario-contacto', compact('contacto'));
     }
 
     public function update(Request $request, $id)
