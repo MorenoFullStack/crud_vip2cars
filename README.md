@@ -59,8 +59,9 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
    ```bash
    npm install
 
-4. **Configura las variables de entorno:**:
--Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra por la fila 23:
+4. **Configura las variables de entorno:**
+
+-Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra en la fila 23 y estaran comentadas, se debe de descomentar:
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -68,36 +69,40 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
     DB_DATABASE=nombre_de_tu_base_de_datos
     DB_USERNAME=tu_usuario
     DB_PASSWORD=tu_contraseña
+
 - **En caso de no tener contraseña ni usuario dejarlo asi**
 
     DB_USERNAME=root
+
     DB_PASSWORD=
 
-- **Si usa xampp simplemente crea una nueva base de datos vacia**
-- **de nombre vip2cars_db o cualquiera nombre y lo pone en su DB_DATABASE**
+- **Si usa xampp simplemente crea una nueva base de datos vacia de nombre vip2cars_db o cualquiera nombre y lo pone en su DB_DATABASE**
 
     DB_DATABASE=vip2cars_db
 
-6. **Genera la clave de aplicación:**:
+- **Ahora desde la terminal en visual estudio code (nueva terminal) se va ejecutar los siguientes comandos**
+
+5. **Genera la clave de aplicación:**
+
    ```bash
    php artisan key:generate
 
-7. **Ejecuta las migraciones y seeds:**:
+6. **Ejecutar las migraciones para crear las tablas:**
    ```bash
-   php artisan migrate --seed
+   php artisan migrate
 
-7. **Levanta el servidor de desarrollo:**:
+- **Verificamos en MySQL si las tablas se migraron en la base de datos creada al princio(vip2cars_db)**
+
+7. **Levanta el servidor de desarrollo de Laravel:**:
    ```bash
-   npm run dev
+   php artisan serve
 
-## Funcionalidades del CRUD
+- **Si nuestro puerto es diferente a 8000 ejecutamos el puerto que tenemos manualmente**
+   ```bash
+   hp artisan serve --port=8080
 
-El sistema incluye las siguientes funcionalidades para la gestión de vehículos y contactos:
+- **En este caso el puerto disponible con el que corre xampp es 8080**
 
-- **Crear**: Formulario para agregar un nuevo vehículo o contacto.
-- **Leer**: Visualizar los registros de vehículos y contactos en una tabla, utilizando **DataTables** con soporte para búsqueda, ordenación y paginación.
-- **Actualizar**: Editar los registros existentes de vehículos y contactos.
-- **Eliminar**: Opción para eliminar registros de vehículos y contactos.
 
 ## Sistema de Login Demo
 
@@ -108,7 +113,16 @@ El sistema incluye un **login demo** con las siguientes credenciales de acceso:
 
 El sistema tiene un **header** con navegación y permite acceder a las funcionalidades del CRUD una vez que el usuario se autentica.
 
-## Suma de Puntos (Extras)
+## Funcionalidades del CRUD
+
+El sistema incluye las siguientes funcionalidades para la gestión de vehículos y contactos:
+
+- **Crear**: Formulario para agregar un nuevo vehículo o contacto.
+- **Leer**: Visualizar los registros de vehículos y contactos en una tabla, utilizando **DataTables** con soporte para búsqueda, ordenación y paginación.
+- **Actualizar**: Editar los registros existentes de vehículos y contactos.
+- **Eliminar**: Opción para eliminar registros de vehículos y contactos.
+
+## (Extras)
 
 El sistema implementa las siguientes características adicionales:
 
