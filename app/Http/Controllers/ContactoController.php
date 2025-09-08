@@ -10,7 +10,7 @@ class ContactoController extends Controller
     public function index()
     {
         $contactos = Contacto::all();
-        return view('contactos.index', compact('contactos'));
+        return view('contactos.contactos-list', compact('contactos'));
     }
 
     public function create()
@@ -23,7 +23,7 @@ class ContactoController extends Controller
         $request->validate($this->validationRules(), $this->validationMessages());
 
         Contacto::create($request->all());
-        return redirect()->route('contactos.index')->with('success', 'Cliente registrado con éxito!');
+        return redirect()->route('contactos.contactos-list')->with('success', 'Cliente registrado con éxito!');
     }
 
     public function edit($id)
@@ -38,13 +38,13 @@ class ContactoController extends Controller
 
         $contacto = Contacto::findOrFail($id);
         $contacto->update($request->all());
-        return redirect()->route('contactos.index')->with('success', 'Cliente actualizado con éxito!');
+        return redirect()->route('contactos.contactos-list')->with('success', 'Cliente actualizado con éxito!');
     }
 
     public function destroy($id)
     {
         Contacto::destroy($id);
-        return redirect()->route('contactos.index')->with('success', 'Cliente eliminado con éxito!');
+        return redirect()->route('contactos.contactos-list')->with('success', 'Cliente eliminado con éxito!');
     }
 
     private function validationRules($id = null)
