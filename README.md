@@ -61,22 +61,21 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
 
 4. **Configura las variables de entorno:**
 
--Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra en la fila 23 y estaran comentadas, se debe de descomentar:
+   -Renombra el archivo .env.example a .env y configura los detalles de la base de datos, se encuentra en la fila 23 y estaran comentadas, se debe descomentar:
 
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=nombre_de_tu_base_de_datos
-    DB_USERNAME=tu_usuario
-    DB_PASSWORD=tu_contraseña
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nombre_de_tu_base_de_datos
+   DB_USERNAME=tu_usuario
+   DB_PASSWORD=tu_contraseña
 
-- **En caso de no tener contraseña ni usuario dejarlo asi**
+- En caso de no tener contraseña ni usuario dejarlo asi
 
     DB_USERNAME=root
-
     DB_PASSWORD=
 
-- **Si usa xampp simplemente crea una nueva base de datos vacia de nombre vip2cars_db o cualquiera nombre y lo pone en su DB_DATABASE**
+- Si usa xampp simplemente crea una nueva base de datos vacia de nombre vip2cars_db y ese mismo nombre debe ir en su DB_DATABASE
 
     DB_DATABASE=vip2cars_db
 
@@ -99,7 +98,7 @@ El script SQL para crear las tablas necesarias está disponible en el archivo:
 
 - **Si nuestro puerto es diferente a 8000 ejecutamos el puerto que tenemos manualmente**
    ```bash
-   hp artisan serve --port=8080
+   php artisan serve --port=8080
 
 - **En este caso el puerto disponible con el que corre xampp es 8080**
 
